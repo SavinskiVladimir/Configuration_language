@@ -1,0 +1,6 @@
+server:
+  host: localhost
+  port: 8080
+  routes:
+    - /api/v1/resource
+    - /api/v1/another_resource

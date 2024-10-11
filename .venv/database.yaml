@@ -1,0 +1,5 @@
+database:
+  type: postgres
+  name: mydb
+  user: admin
+  password: secret
