@@ -1,0 +1,27 @@
+# This is a single-line comment
+name: Vladimir Savinskiy
+age: 19
+height: 1.80
+skills:
+  - C++
+  - Guitar
+  - Bad jokes
+multi_line_comment: |
+  This is a multi-line comment.
+  It explains something important.
+constants:
+  - (define PI 3.14);
+  - (define E 2.71);
+names:
+  firstName: Vladimir
+  lastName: Savinskiy
+numbers:
+  - 42
+  - 96
+arrays:
+  - [1; 2; 3; 4; 5]
+calculations:
+  sum: 5 + 3
+  sub: 5 - 3
+  mul: 5 * 4
+  div: 5 / 3
