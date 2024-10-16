@@ -16,8 +16,17 @@ def convert_to_custom_language(data):
             array_values = '; '.join(map(str, value))
             output.append(f"{key}: [{array_values}]")
         elif isinstance(value, dict): # если обрабатываемый объект имеет тип словарь
-            # рекурсивный перевод словаря
-            output.append(f"{key}: {{ {convert_to_custom_language(value)} }}")
+            if key != 'constants': # если это не определение констант, то рекурсивный перевод словаря
+                output.append(f"{key}: {{ {convert_to_custom_language(value)} }}")
+            else:
+                for i in value: # иначе вывод констант по правилу
+                    if isinstance(value[i], str) and re.match(r'^[0-9\s\+\-\*/]+$', value[i]):
+                        # вычисление значения выражения
+                        evaluated_value = eval(value[i])
+                        # запись определения значения
+                        output.append(f"(define ${i}$ {evaluated_value});")
+                    else:
+                        output.append(f"(define {i} {value[i]});")
         elif isinstance(value, str) and value.startswith("#"): # если обрабатываемый объект является строкой, начинающейся с "#"
             # обработка однострочного комментария
             output.append(f"* {value[1:].strip()}")
@@ -31,10 +40,10 @@ def convert_to_custom_language(data):
                 # вычисление значения выражения
                 evaluated_value = eval(value)
                 # запись определения значения
-                output.append(f"(define ${key}$ {evaluated_value});")
+                output.append(f"${key}$ {evaluated_value};")
             else:
                 # запись определения значения
-                output.append(f"(define {key} {value});")
+                output.append(f"{key} {value};")
         else:
             # запись значений типа "строка: строка"
             output.append(f"{key}: {value}")

@@ -1,6 +1,10 @@
-app:
-  name: MyApp
-  version: 1.0.0
-  features:
-    - authentication
-    - logging
+ version: 1.2.3 * App version
+ dependes:
+   - 1
+   - 2
+   - 3
+   - 4
+ constants:
+   - startValue: 5
+   - endValue: 10
+   - counter: 1

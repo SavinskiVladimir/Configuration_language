@@ -1,6 +1,12 @@
-server:
-  host: localhost
-  port: 8080
-  routes:
-    - /api/v1/resource
-    - /api/v1/another_resource
+host: 1047
+deleteIF: -5
+Procedures:
+  - 12
+  - 66
+  - 431
+  - 75
+  - 12
+multi_line_comment: |
+  server is virtual
+  don't try to start anything on its hardware.
+
