@@ -53,14 +53,8 @@ def convert_to_custom_language(data):
 
 def main():
     file_path = sys.argv[1] # получение пути к yaml файлу из параметров командной строки
-    try:
-        data = parse_yaml(file_path) # получение данных из yaml файла
-        output = convert_to_custom_language(data) # обработка содержимого файла
-        print(output) # вывод сформированного кода на реализуемом коонфигурационном языке в консоль
-    except yaml.YAMLError as e:
-        print(f"YAML Error: {e}")
-    except Exception as e:
-        print(f"Error: {e}")
-
+    data = parse_yaml(file_path) # получение данных из yaml файла
+    output = convert_to_custom_language(data) # обработка содержимого файла
+    print(output) # вывод сформированного кода на реализуемом коонфигурационном языке в консоль
 if __name__ == "__main__":
     main()
